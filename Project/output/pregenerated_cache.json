@@ -1,0 +1,134 @@
+{
+  "parsed": [
+    {
+      "file": "sample_orders.py",
+      "type": "python",
+      "sources": [
+        "data/orders.csv"
+      ],
+      "targets": [
+        "big_orders"
+      ],
+      "transformations": [
+        "filter/condition",
+        "rename",
+        "new column: processed"
+      ]
+    },
+    {
+      "file": "sample_hr.py",
+      "type": "python",
+      "sources": [
+        "data/attendance.csv",
+        "data/employees.csv"
+      ],
+      "targets": [
+        "hr_report"
+      ],
+      "transformations": [
+        "filter/condition",
+        "merge",
+        "new column: bonus"
+      ]
+    },
+    {
+      "file": "sample_sales.sql",
+      "type": "sql",
+      "sources": [
+        "customers",
+        "orders"
+      ],
+      "targets": [
+        "sales_summary"
+      ],
+      "transformations": [
+        "count",
+        "join",
+        "sum",
+        "where"
+      ]
+    }
+  ],
+  "docs": {
+    "sample_orders.py": "Here is the documentation for the ETL script:\n\n**Overview**\nThis Python-based ETL script extracts order data from a CSV file and transforms it to load into the \"big_orders\" target.\n\n**What It Does**\n\n* Extracts order data from the `data/orders.csv` source file\n* Applies transformations, including filtering, renaming, and adding a new column for processed orders\n\n**Output**\nThe transformed data is written to the \"big_orders\" target, ready for analysis or further processing.",
+    "sample_hr.py": "Here is the documentation for the ETL script:\n\n**Overview**\nThis ETL script, `sample_hr.py`, extracts data from two sources (`data/attendance.csv` and `data/employees.csv`) to generate a comprehensive HR report.\n\n**What It Does**\n\n* Filters attendance data based on specific conditions (e.g., only considering regular employees) and merges it with employee information.\n* Calculates a new column, \"bonus\", based on predefined rules and adds it to the combined dataset.\n\n**Output**\nThe script produces an output file, `hr_report`, which contains filtered and transformed HR data, including attendance records and bonus calculations.",
+    "sample_sales.sql": "Here is the documentation for the ETL script:\n\n**Overview**\nThis ETL script extracts and transforms sales data from customer and order tables to generate a summary report.\n\n**What It Does**\n\n* Joins customer information with order details to create a comprehensive sales dataset.\n* Applies filters and aggregations to summarize sales by customer, including total orders and revenue.\n\n**Output**\nThe script produces a `sales_summary` table containing aggregated sales data, ready for analysis and reporting."
+  },
+  "business": {
+    "sample_orders.py": "**Business Purpose**\nAutomates data processing from data/orders.csv into big_orders.\n\n**Who Benefits**\nData and analytics teams who depend on big_orders for reporting.\n\n**Risk if Fails**\nbig_orders will not be updated causing stale data in reports.",
+    "sample_hr.py": "Here are the answers:\n\n**Business Purpose:** The ETL script 'sample_hr.py' is designed to extract attendance records from employees and generate a comprehensive HR report, providing insights on employee attendance patterns, trends, and utilization.\n\n**Who Benefits:** This report will benefit HR managers and business leaders by enabling them to make data-driven decisions about staff allocation, training programs, and benefits optimization, ultimately improving overall employee satisfaction and productivity.\n\n**Risk if Fails:** If the ETL script fails, we risk not having an accurate and up-to-date HR report, which may lead to delayed or inaccurate decision-making, potentially impacting our ability to retain top talent and drive business growth.",
+    "sample_sales.sql": "**Business Purpose**\nAutomates data processing from customers, orders into sales_summary.\n\n**Who Benefits**\nData and analytics teams who depend on sales_summary for reporting.\n\n**Risk if Fails**\nsales_summary will not be updated causing stale data in reports."
+  },
+  "diagrams": {
+    "sample_orders.py": "output\\diagrams\\sample_orders_py.png",
+    "sample_hr.py": "output\\diagrams\\sample_hr_py.png",
+    "sample_sales.sql": "output\\diagrams\\sample_sales_sql.png"
+  },
+  "impact": {
+    "graph_nodes": 11,
+    "graph_edges": 8,
+    "impact_reports": {
+      "sample_orders.py": {
+        "script": "sample_orders.py",
+        "risk_level": "MEDIUM",
+        "risk_reason": "Failure affects 1 output(s) but no other scripts directly.",
+        "upstream_dependencies": [
+          "data/orders.csv"
+        ],
+        "all_upstream": [
+          "data/orders.csv"
+        ],
+        "direct_outputs": [
+          "big_orders"
+        ],
+        "all_downstream": [
+          "big_orders"
+        ],
+        "affected_scripts": [],
+        "total_nodes_affected": 1
+      },
+      "sample_hr.py": {
+        "script": "sample_hr.py",
+        "risk_level": "MEDIUM",
+        "risk_reason": "Failure affects 1 output(s) but no other scripts directly.",
+        "upstream_dependencies": [
+          "data/attendance.csv",
+          "data/employees.csv"
+        ],
+        "all_upstream": [
+          "data/attendance.csv",
+          "data/employees.csv"
+        ],
+        "direct_outputs": [
+          "hr_report"
+        ],
+        "all_downstream": [
+          "hr_report"
+        ],
+        "affected_scripts": [],
+        "total_nodes_affected": 1
+      },
+      "sample_sales.sql": {
+        "script": "sample_sales.sql",
+        "risk_level": "MEDIUM",
+        "risk_reason": "Failure affects 1 output(s) but no other scripts directly.",
+        "upstream_dependencies": [
+          "customers",
+          "orders"
+        ],
+        "all_upstream": [
+          "customers",
+          "orders"
+        ],
+        "direct_outputs": [
+          "sales_summary"
+        ],
+        "all_downstream": [
+          "sales_summary"
+        ],
+        "affected_scripts": [],
+        "total_nodes_affected": 1
+      }
+    }
+  }
+}
