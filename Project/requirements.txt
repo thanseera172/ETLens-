@@ -101,3 +101,4 @@ urllib3==2.7.0
 uvicorn==0.29.0
 watchdog==6.0.0
 yarl==1.24.2
+google-generativeai
